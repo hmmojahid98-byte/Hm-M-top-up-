@@ -12,7 +12,7 @@
         .box { background-color: #1e1e1e; margin: 15px auto; padding: 18px; border-radius: 10px; max-width: 380px; border: 1px solid #333; }
         .nagad-box { border: 1px solid #f6921e; background-color: #261c14; }
         .number-text { font-size: 20px; font-weight: bold; color: #f6921e; letter-spacing: 1px; margin: 8px 0; }
-        input, select { width: 90%; padding: 12px; margin: 8px 0; border-radius: 5px; border: 1px solid #444; background: #2c2c2c; color: white; font-size: 15px; }
+        input, select { width: 92%; padding: 12px; margin: 8px 0; border-radius: 5px; border: 1px solid #444; background: #2c2c2c; color: white; font-size: 15px; }
         button { background-color: #4caf50; color: white; border: none; padding: 12px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; width: 95%; margin-top: 10px; font-weight: bold; }
         .add-btn { background-color: #f6921e; }
         .copy-btn { background-color: #444; width: auto; padding: 6px 12px; font-size: 13px; margin-top: 5px; }
@@ -45,14 +45,23 @@
         <button class="add-btn" onclick="addMoney()">টাকা অ্যাড করুন</button>
     </div>
 
-    <!-- ২. ডায়মন্ড অর্ডার সেকশন -->
+    <!-- ২. ডায়মন্ড অর্ডার সেকশন (সব প্যাকেজ) -->
     <div class="box">
         <h3>💎 ওয়ালেট থেকে ডায়মন্ড কিনুন</h3>
         <select id="package">
-            <option value="85|১০০ ডায়মন্ড (৮৫ টাকা)">১০০ ডায়মন্ড - ৮৫ টাকা</option>
-            <option value="250|৩১০ ডায়মন্ড (২৫০ টাকা)">৩১০ ডায়মন্ড - ২৫০ টাকা</option>
-            <option value="420|৫২০ ডায়মন্ড (৪২০ টাকা)">৫২০ ডায়মন্ড - ৪২০ টাকা</option>
+            <option value="25|২৫ ডায়মন্ড (২৫ টাকা)">২৫ ডায়মন্ড - ২৫ টাকা</option>
+            <option value="45|৫০ ডায়মন্ড (৪৫ টাকা)">৫০ ডায়মন্ড - ৪৫ টাকা</option>
+            <option value="85|১১৫ ডায়মন্ড (৮৫ টাকা)">১১৫ ডায়মন্ড - ৮৫ টাকা</option>
+            <option value="170|২৪০ ডায়মন্ড (১৭০ টাকা)">২৪০ ডায়মন্ড - ১৭০ টাকা</option>
+            <option value="250|৩৫৫ ডায়মন্ড (২৫০ টাকা)">৩৫৫ ডায়মন্ড - ২৫০ টাকা</option>
+            <option value="340|৪৮০ ডায়মন্ড (৩৪০ টাকা)">৪৮০ ডায়মন্ড - ৩৪০ টাকা</option>
+            <option value="420|৬১০ ডায়মন্ড (৪২০ টাকা)">৬১০ ডায়মন্ড - ৪২০ টাকা</option>
+            <option value="830|১২৪০ ডায়মন্ড (৮৩০ টাকা)">১২৪০ ডায়মন্ড - ৮৩০ টাকা</option>
+            <option value="1650|২৫৩০ ডায়মন্ড (১৬৫০ টাকা)">২৫৩০ ডায়মন্ড - ১৬৫০ টাকা</option>
+            <option value="3300|৫০৬০ ডায়মন্ড (৩৩০০ টাকা)">৫০৬০ ডায়মন্ড - ৩৩০০ টাকা</option>
             <option value="160|উইকলি মেম্বারশিপ (১৬০ টাকা)">উইকলি মেম্বারশিপ - ১৬০ টাকা</option>
+            <option value="790|মান্থলি মেম্বারশিপ (৭৯০ টাকা)">মান্থলি মেম্বারশিপ - ৭৯০ টাকা</option>
+            <option value="190|লেভেল আপ পাস (১৯০ টাকা)">লেভেল আপ পাস - ১৯০ টাকা</option>
         </select>
         <input type="text" id="playerId" placeholder="আপনার গেম UID (Player ID) দিন" required>
         <button onclick="buyDiamond()">ওয়ালেট ব্যালেন্স দিয়ে অর্ডার করুন</button>
