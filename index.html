@@ -13,13 +13,16 @@
         .balance { font-size: 22px; font-weight: bold; color: #4caf50; }
         .box { background-color: #1e1e1e; margin: 15px auto; padding: 18px; border-radius: 12px; max-width: 390px; border: 1px solid #333; }
         .checkout-box { border: 2px solid #ff5722; background-color: #1a1615; }
-        .pay-tabs { display: flex; gap: 10px; margin: 12px 0; }
-        .pay-tab { flex: 1; padding: 10px; border-radius: 8px; border: 2px solid transparent; font-weight: bold; color: white; cursor: pointer; font-size: 14px; }
-        .bkash-tab { background-color: #e2136e; }
-        .nagad-tab { background-color: #f6921e; }
-        .pay-tab.active { border-color: white; }
+        
+        /* বিকাশ ও নগদ সিলেক্ট করার সহজ অপশন */
+        .pay-options { display: flex; gap: 10px; margin: 12px 0; }
+        .pay-label { flex: 1; padding: 12px 8px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; border: 2px solid transparent; }
+        .bkash-bg { background-color: #e2136e; }
+        .nagad-bg { background-color: #f6921e; }
+        .pay-label input { width: auto; margin: 0; transform: scale(1.2); }
+
         .num-display { background: #121212; padding: 12px; border-radius: 8px; border: 1px dashed #666; margin: 10px 0; }
-        .num-text { font-size: 20px; font-weight: bold; color: #4fc3f7; margin: 5px 0; letter-spacing: 1px; }
+        .num-text { font-size: 21px; font-weight: bold; color: #4fc3f7; margin: 5px 0; letter-spacing: 1px; }
         input, select { width: 94%; padding: 12px; margin: 8px 0; border-radius: 6px; border: 1px solid #444; background: #2c2c2c; color: white; font-size: 15px; }
         button { background-color: #4caf50; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-size: 16px; cursor: pointer; width: 96%; margin-top: 10px; font-weight: bold; }
         .copy-btn { background-color: #444; width: auto; padding: 6px 14px; font-size: 12px; margin-top: 4px; }
@@ -44,7 +47,7 @@
     <!-- ধাপ ১: প্যাকেজ সিলেক্ট করার বক্স -->
     <div class="box">
         <h3>💎 ১. ডায়মন্ড বা প্যাকেজ সিলেক্ট করুন</h3>
-        <select id="packageSelect" onchange="onPackageSelect()">
+        <select id="packageSelect">
             <option value="20|২৫ ডায়মন্ড">২৫ ডায়মন্ড - ২০ টাকা</option>
             <option value="38|৫০ ডায়মন্ড">৫০ ডায়মন্ড - ৩৮ টাকা</option>
             <option value="76|১১৫ ডায়মন্ড">১১৫ ডায়মন্ড - ৭৬ টাকা</option>
@@ -68,31 +71,35 @@
     </div>
 
     <!-- ধাপ ২: পেমেন্ট ও অর্ডার বক্স -->
-    <div class="box checkout-box" id="checkoutSection">
+    <div class="box checkout-box">
         <h3>🛒 ২. পেমেন্ট ও অর্ডার কনফার্ম</h3>
         <p style="font-size: 15px; color: #ffab91;">সিলেক্ট করা প্যাকেজ: <b id="selectedPkgText">২৫ ডায়মন্ড (২০ টাকা)</b></p>
 
-        <!-- অপশন ক: ওয়ালেট থেকে কেনা -->
-        <button type="button" onclick="buyWithWallet()">✅ ওয়ালেট ব্যালেন্স দিয়ে অর্ডার করুন</button>
+        <button type="button" id="btnBuyWallet">✅ ওয়ালেট ব্যালেন্স দিয়ে অর্ডার করুন</button>
 
         <hr style="border: 0.5px solid #333; margin: 18px 0;">
 
-        <!-- অপশন খ: ওয়ালেটে টাকা না থাকলে বিকাশ/নগদে অ্যাড মানি -->
         <h4 style="margin: 5px 0; color: #f6921e;">💳 ওয়ালেটে টাকা নেই? নিচে Add Money করুন:</h4>
-        <div class="pay-tabs">
-            <button type="button" class="pay-tab bkash-tab active" id="tabBkash" onclick="chooseMethod('bKash')">বিকাশ (bKash)</button>
-            <button type="button" class="pay-tab nagad-tab" id="tabNagad" onclick="chooseMethod('Nagad')">নগদ (Nagad)</button>
+        
+        <!-- বিকাশ ও নগদ সিলেক্ট করার রেডিও বাটন -->
+        <div class="pay-options">
+            <label class="pay-label bkash-bg">
+                <input type="radio" name="payMethod" value="bKash" checked> বিকাশ (bKash)
+            </label>
+            <label class="pay-label nagad-bg">
+                <input type="radio" name="payMethod" value="Nagad"> নগদ (Nagad)
+            </label>
         </div>
 
         <div class="num-display">
             <div style="font-size: 13px;"><span id="methodTitle">বিকাশ (bKash)</span> পার্সোনাল নম্বরে Send Money করুন:</div>
             <div class="num-text" id="payNumDisplay">01881663599</div>
-            <button type="button" class="copy-btn" onclick="copyPayNumber()">📋 নম্বর কপি করুন</button>
+            <button type="button" class="copy-btn" id="btnCopyNum">📋 নম্বর কপি করুন</button>
         </div>
 
         <input type="number" id="addAmount" value="20" placeholder="কত টাকা পাঠিয়েছেন? (যেমন: 100)">
         <input type="text" id="trxId" placeholder="Transaction ID (TrxID) দিন">
-        <button type="button" class="add-btn" onclick="addMoneyNow()">➕ ওয়ালেটে টাকা অ্যাড করুন</button>
+        <button type="button" class="add-btn" id="btnAddMoney">➕ ওয়ালেটে টাকা অ্যাড করুন</button>
     </div>
 
     <!-- হেল্পলাইন -->
@@ -112,35 +119,31 @@
         let currentPkgName = "২৫ ডায়মন্ড";
         let currentMethod = "bKash";
 
-        // প্যাকেজ পরিবর্তন করলে দাম ও নাম আপডেট করা
-        function onPackageSelect() {
-            const val = document.getElementById("packageSelect").value;
-            const parts = val.split("|");
-            currentPrice = parseInt(parts[0]);
-            currentPkgName = parts[1];
-
+        // প্যাকেজ পরিবর্তন করলে নাম ও দাম আপডেট
+        document.getElementById("packageSelect").addEventListener("change", function() {
+            const parts = this.value.split("|");
+            currentPrice = parseInt(parts);
+            currentPkgName = parts;
             document.getElementById("selectedPkgText").innerText = currentPkgName + " (" + currentPrice + " টাকা)";
             document.getElementById("addAmount").value = currentPrice;
-        }
+        });
 
-        // বিকাশ বা নগদ বাটন পরিবর্তন
-        function chooseMethod(method) {
-            currentMethod = method;
-            if (method === "bKash") {
-                document.getElementById("methodTitle").innerText = "বিকাশ (bKash)";
-                document.getElementById("payNumDisplay").innerText = "01881663599";
-                document.getElementById("tabBkash").classList.add("active");
-                document.getElementById("tabNagad").classList.remove("active");
-            } else {
-                document.getElementById("methodTitle").innerText = "নগদ (Nagad)";
-                document.getElementById("payNumDisplay").innerText = "01621459286";
-                document.getElementById("tabNagad").classList.add("active");
-                document.getElementById("tabBkash").classList.remove("active");
-            }
-        }
+        // বিকাশ ও নগদ পরিবর্তন (Radio button change)
+        document.querySelectorAll('input[name="payMethod"]').forEach(function(radio) {
+            radio.addEventListener("change", function() {
+                currentMethod = this.value;
+                if (this.value === "bKash") {
+                    document.getElementById("methodTitle").innerText = "বিকাশ (bKash)";
+                    document.getElementById("payNumDisplay").innerText = "01881663599";
+                } else {
+                    document.getElementById("methodTitle").innerText = "নগদ (Nagad)";
+                    document.getElementById("payNumDisplay").innerText = "01621459286";
+                }
+            });
+        });
 
         // নম্বর কপি করা
-        function copyPayNumber() {
+        document.getElementById("btnCopyNum").addEventListener("click", function() {
             const num = document.getElementById("payNumDisplay").innerText;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(num);
@@ -148,10 +151,10 @@
             } else {
                 alert("নম্বরটি হলো: " + num);
             }
-        }
+        });
 
         // টাকা অ্যাড করা
-        function addMoneyNow() {
+        document.getElementById("btnAddMoney").addEventListener("click", function() {
             const amount = parseInt(document.getElementById("addAmount").value);
             const trx = document.getElementById("trxId").value.trim();
 
@@ -169,10 +172,10 @@
 
             const msg = "নতুন Add Money রিকোয়েস্ট:%0Aমাধ্যম: " + currentMethod + "%0Aপরিমাণ: " + amount + " টাকা%0ATrxID: " + trx;
             window.location.href = "https://wa.me" + adminWhatsApp + "?text=" + msg;
-        }
+        });
 
         // ওয়ালেট থেকে ডায়মন্ড কেনা
-        function buyWithWallet() {
+        document.getElementById("btnBuyWallet").addEventListener("click", function() {
             const uid = document.getElementById("playerId").value.trim();
 
             if (uid === "") {
@@ -180,5 +183,4 @@
                 return;
             }
             if (balance < currentPrice) {
-
-            
+                
