@@ -3,142 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hm M Top Up</title>
+    <title>Hm M Top Up - Official Store</title>
     <style>
-        * { box-sizing: border-box; font-family: sans-serif; }
-        body { background: #0d1117; color: #fff; margin: 0; padding: 15px; text-align: center; }
-        .container { max-width: 420px; margin: 0 auto; }
-        .header { background: linear-gradient(135deg, #ff512f, #dd2476); padding: 18px; border-radius: 14px; margin-bottom: 15px; }
-        .header h1 { margin: 0; font-size: 22px; }
+        body { font-family: sans-serif; background-color: #121212; color: white; text-align: center; padding: 15px; margin: 0; }
+        .header { background: linear-gradient(135deg, #ff5722, #e91e63); padding: 18px; border-radius: 12px; margin-bottom: 15px; }
+        .header h1 { margin: 0; font-size: 24px; }
         .header p { margin: 5px 0 0; font-size: 13px; }
-        .wallet-bar { background: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .balance { font-size: 22px; font-weight: bold; color: #2ea043; }
-        .open-add-btn { background: #238636; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }
-        .card { background: #161b22; padding: 18px; border-radius: 14px; border: 1px solid #30363d; margin-bottom: 15px; }
-        .card h3 { margin-top: 0; font-size: 17px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        .pay-methods { display: flex; gap: 10px; margin-bottom: 15px; }
-        .pay-btn { flex: 1; padding: 12px; border-radius: 8px; border: 2px solid transparent; font-weight: bold; font-size: 15px; cursor: pointer; color: #fff; }
-        .bkash-btn { background: #e2136e; }
-        .nagad-btn { background: #f6921e; }
-        .pay-btn.active { border-color: #fff; }
-        .number-display { background: #0d1117; padding: 12px; border-radius: 10px; border: 1px dashed #8b949e; margin-bottom: 12px; }
-        .number-text { font-size: 20px; font-weight: bold; color: #58a6ff; margin: 5px 0; }
-        .copy-btn { background: #21262d; color: #fff; border: 1px solid #30363d; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; }
-        .portal-tabs { display: flex; gap: 5px; margin-bottom: 15px; background: #0d1117; padding: 5px; border-radius: 10px; }
-        .tab-btn { flex: 1; padding: 10px 4px; background: transparent; border: none; color: #8b949e; font-size: 13px; font-weight: bold; border-radius: 8px; cursor: pointer; }
-        .tab-btn.active { background: #238636; color: #fff; }
-        .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .pkg-item { background: #0d1117; border: 1px solid #30363d; padding: 12px 6px; border-radius: 10px; cursor: pointer; }
-        .pkg-item.selected { border-color: #ff512f; background: rgba(255, 81, 47, 0.2); }
-        .pkg-name { font-size: 14px; font-weight: bold; margin-bottom: 4px; }
-        .pkg-price { font-size: 13px; color: #2ea043; font-weight: bold; }
-        input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #30363d; background: #0d1117; color: #fff; font-size: 14px; }
-        .action-btn { width: 100%; padding: 13px; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; color: #fff; cursor: pointer; margin-top: 8px; }
-        .btn-green { background: #238636; }
-        .btn-orange { background: linear-gradient(135deg, #ff512f, #dd2476); }
-        .support-btns { display: flex; gap: 10px; margin-top: 10px; }
-        .wa-btn, .call-btn { flex: 1; text-decoration: none; padding: 11px; border-radius: 8px; color: #fff; font-weight: bold; font-size: 14px; }
-        .wa-btn { background: #25D366; }
-        .call-btn { background: #1f6feb; }
+        .wallet-bar { background-color: #1f2937; padding: 15px; border-radius: 10px; border: 2px solid #4caf50; max-width: 390px; margin: 10px auto; display: flex; justify-content: space-between; align-items: center; }
+        .balance { font-size: 22px; font-weight: bold; color: #4caf50; }
+        .box { background-color: #1e1e1e; margin: 15px auto; padding: 18px; border-radius: 12px; max-width: 390px; border: 1px solid #333; }
+        .checkout-box { border: 2px solid #ff5722; background-color: #1a1615; display: none; }
+        .pay-tabs { display: flex; gap: 10px; margin: 12px 0; }
+        .pay-tab { flex: 1; padding: 10px; border-radius: 8px; border: 2px solid transparent; font-weight: bold; color: white; cursor: pointer; font-size: 14px; }
+        .bkash-tab { background-color: #e2136e; }
+        .nagad-tab { background-color: #f6921e; }
+        .pay-tab.active { border-color: white; }
+        .num-display { background: #121212; padding: 12px; border-radius: 8px; border: 1px dashed #666; margin: 10px 0; }
+        .num-text { font-size: 20px; font-weight: bold; color: #4fc3f7; margin: 5px 0; letter-spacing: 1px; }
+        input, select { width: 94%; padding: 12px; margin: 8px 0; border-radius: 6px; border: 1px solid #444; background: #2c2c2c; color: white; font-size: 15px; }
+        button { background-color: #4caf50; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-size: 16px; cursor: pointer; width: 96%; margin-top: 10px; font-weight: bold; }
+        .copy-btn { background-color: #444; width: auto; padding: 6px 14px; font-size: 12px; margin-top: 4px; }
+        .add-btn { background-color: #f6921e; }
+        .wa-btn { background-color: #25D366; text-decoration: none; display: inline-block; padding: 10px 18px; color: white; border-radius: 6px; font-weight: bold; margin: 5px; }
+        .call-btn { background-color: #2196F3; text-decoration: none; display: inline-block; padding: 10px 18px; color: white; border-radius: 6px; font-weight: bold; margin: 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
     <div class="header">
         <h1>🔥 Hm M Top Up</h1>
-        <p>বাংলাদেশের সবচেয়ে দ্রুত ও বিশ্বস্ত গেমিং টপ-আপ পোর্টাল</p>
+        <p>প্যাকেজ সিলেক্ট করুন এবং দ্রুত ডায়মন্ড বুঝে নিন</p>
     </div>
 
+    <!-- ওয়ালেট ব্যালেন্স -->
     <div class="wallet-bar">
-        <div style="text-align: left;">
-            <span style="font-size: 13px; color: #8b949e; display: block;">💰 ওয়ালেট ব্যালেন্স</span>
-            <span class="balance">৳ <span id="userBalance">0</span></span>
-        </div>
-        <button type="button" class="open-add-btn" id="btnToggleAdd">➕ Add Money</button>
+        <span>💰 আপনার ওয়ালেট ব্যালেন্স:</span>
+        <span class="balance">৳ <span id="userBalance">0</span></span>
     </div>
 
-    <div class="card" id="addMoneySection" style="display: none; border-color: #2ea043;">
-        <h3>💳 পেমেন্ট মাধ্যম সিলেক্ট করুন</h3>
-        <div class="pay-methods">
-            <button type="button" class="pay-btn bkash-btn" id="btnBkash">বিকাশ (bKash)</button>
-            <button type="button" class="pay-btn nagad-btn" id="btnNagad">নগদ (Nagad)</button>
-        </div>
-
-        <div id="paymentFormArea" style="display: none;">
-            <div class="number-display">
-                <div style="font-size: 13px; color: #8b949e;"><span id="methodLabel"></span> পার্সোনাল নম্বরে Send Money করুন:</div>
-                <div class="number-text" id="payNumber"></div>
-                <button type="button" class="copy-btn" id="btnCopy">📋 নম্বর কপি করুন</button>
-            </div>
-            <input type="number" id="addAmount" placeholder="কত টাকা পাঠিয়েছেন? (যেমন: 100)">
-            <input type="text" id="trxId" placeholder="Transaction ID (TrxID) দিন">
-            <button type="button" class="action-btn btn-green" id="btnConfirmAdd">টাকা অ্যাড কনফার্ম করুন</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>🛒 টপ-আপ পোর্টাল সিলেক্ট করুন</h3>
-        <div class="portal-tabs">
-            <button type="button" class="tab-btn active" id="tabDiamond">💎 ডায়মন্ড</button>
-            <button type="button" class="tab-btn" id="tabMember">👑 উইকলি/মান্থলি</button>
-            <button type="button" class="tab-btn" id="tabLevel">🚀 লেভেল আপ</button>
-        </div>
-
-        <div id="portal-diamond" class="pkg-grid">
-            <div class="pkg-item" data-price="20" data-name="২৫ ডায়মন্ড"><div class="pkg-name">২৫ ডায়মন্ড</div><div class="pkg-price">৳ ২০</div></div>
-            <div class="pkg-item" data-price="38" data-name="৫০ ডায়মন্ড"><div class="pkg-name">৫০ ডায়মন্ড</div><div class="pkg-price">৳ ৩৮</div></div>
-            <div class="pkg-item" data-price="76" data-name="১১৫ ডায়মন্ড"><div class="pkg-name">১১৫ ডায়মন্ড</div><div class="pkg-price">৳ ৭৬</div></div>
-            <div class="pkg-item" data-price="165" data-name="২৪০ ডায়মন্ড"><div class="pkg-name">২৪০ ডায়মন্ড</div><div class="pkg-price">৳ ১৬৫</div></div>
-            <div class="pkg-item" data-price="243" data-name="৩৫৫ ডায়মন্ড"><div class="pkg-name">৩৫৫ ডায়মন্ড</div><div class="pkg-price">৳ ২৪৩</div></div>
-            <div class="pkg-item" data-price="335" data-name="৪৮০ ডায়মন্ড"><div class="pkg-name">৪৮০ ডায়মন্ড</div><div class="pkg-price">৳ ৩৩৫</div></div>
-            <div class="pkg-item" data-price="410" data-name="৬১০ ডায়মন্ড"><div class="pkg-name">৬১০ ডায়মন্ড</div><div class="pkg-price">৳ ৪১০</div></div>
-            <div class="pkg-item" data-price="810" data-name="১২৪০ ডায়মন্ড"><div class="pkg-name">১২৪০ ডায়মন্ড</div><div class="pkg-price">৳ ৮১০</div></div>
-            <div class="pkg-item" data-price="1620" data-name="২৫৩০ ডায়মন্ড"><div class="pkg-name">২৫৩০ ডায়মন্ড</div><div class="pkg-price">৳ ১৬২০</div></div>
-            <div class="pkg-item" data-price="3250" data-name="৫০৬০ ডায়মন্ড"><div class="pkg-name">৫০৬০ ডায়মন্ড</div><div class="pkg-price">৳ ৩২৫০</div></div>
-        </div>
-
-        <div id="portal-membership" class="pkg-grid" style="display: none;">
-            <div class="pkg-item" data-price="38" data-name="উইকলি লাইট"><div class="pkg-name">উইকলি লাইট</div><div class="pkg-price">৳ ৩৮</div></div>
-            <div class="pkg-item" data-price="145" data-name="উইকলি মেম্বারশিপ"><div class="pkg-name">উইকলি মেম্বারশিপ</div><div class="pkg-price">৳ ১৪৫</div></div>
-            <div class="pkg-item" data-price="745" data-name="মান্থলি মেম্বারশিপ"><div class="pkg-name">মান্থলি মেম্বারশিপ</div><div class="pkg-price">৳ ৭৪৫</div></div>
-            <div class="pkg-item" data-price="900" data-name="উইকলি + মান্থলি"><div class="pkg-name">উইকলি + মান্থলি</div><div class="pkg-price">৳ ৯০০</div></div>
-        </div>
-
-        <div id="portal-levelup" class="pkg-grid" style="display: none;">
-            <div class="pkg-item" data-price="150" data-name="ফুল লেভেল আপ পাস"><div class="pkg-name">ফুল লেভেল আপ পাস</div><div class="pkg-price">৳ ১৫০</div></div>
-            <div class="pkg-item" data-price="40" data-name="লেভেল ৬ প্যাক"><div class="pkg-name">লেভেল ৬ প্যাক</div><div class="pkg-price">৳ ৪০</div></div>
-            <div class="pkg-item" data-price="55" data-name="লেভেল ১০ প্যাক"><div class="pkg-name">লেভেল ১০ প্যাক</div><div class="pkg-price">৳ ৫৫</div></div>
-            <div class="pkg-item" data-price="80" data-name="লেভেল ২০ প্যাক"><div class="pkg-name">লেভেল ২০ প্যাক</div><div class="pkg-price">৳ ৮০</div></div>
-        </div>
-
+    <!-- ধাপ ১: প্যাকেজ সিলেক্ট করার বক্স -->
+    <div class="box">
+        <h3>💎 ১. ডায়মন্ড বা প্যাকেজ সিলেক্ট করুন</h3>
+        <select id="packageSelect" onchange="onPackageSelect()">
+            <option value="">-- এখানে ক্লিক করে প্যাকেজ বেছে নিন --</option>
+            <option value="20|২৫ ডায়মন্ড">২৫ ডায়মন্ড - ২০ টাকা</option>
+            <option value="38|৫০ ডায়মন্ড">৫০ ডায়মন্ড - ৩৮ টাকা</option>
+            <option value="76|১১৫ ডায়মন্ড">১১৫ ডায়মন্ড - ৭৬ টাকা</option>
+            <option value="165|২৪০ ডায়মন্ড">২৪০ ডায়মন্ড - ১৬৫ টাকা</option>
+            <option value="243|৩৫৫ ডায়মন্ড">৩৫৫ ডায়মন্ড - ২৪৩ টাকা</option>
+            <option value="335|৪৮০ ডায়মন্ড">৪৮০ ডায়মন্ড - ৩৩৫ টাকা</option>
+            <option value="410|৬১০ ডায়মন্ড">৬১০ ডায়মন্ড - ৪১০ টাকা</option>
+            <option value="810|১২৪০ ডায়মন্ড">১২৪০ ডায়মন্ড - ৮১০ টাকা</option>
+            <option value="1620|২৫৩০ ডায়মন্ড">২৫৩০ ডায়মন্ড - ১৬২০ টাকা</option>
+            <option value="3250|৫০৬০ ডায়মন্ড">৫০৬০ ডায়মন্ড - ৩২৫০ টাকা</option>
+            <option value="38|উইকলি লাইট">উইকলি লাইট - ৩৮ টাকা</option>
+            <option value="145|উইকলি মেম্বারশিপ">উইকলি মেম্বারশিপ - ১৪৫ টাকা</option>
+            <option value="745|মান্থলি মেম্বারশিপ">মান্থলি মেম্বারশিপ - ৭৪৫ টাকা</option>
+            <option value="900|উইকলি + মান্থলি কম্বো">উইকলি + মান্থলি কম্বো - ৯০০ টাকা</option>
+            <option value="150|ফুল লেভেল আপ পাস">ফুল লেভেল আপ পাস - ১৫০ টাকা</option>
+            <option value="40|লেভেল ৬ প্যাক">লেভেল ৬ প্যাক - ৪০ টাকা</option>
+            <option value="55|লেভেল ১০ প্যাক">লেভেল ১০ প্যাক - ৫৫ টাকা</option>
+            <option value="80|লেভেল ২০ প্যাক">লেভেল ২০ প্যাক - ৮০ টাকা</option>
+        </select>
         <input type="text" id="playerId" placeholder="আপনার গেম UID (Player ID) দিন">
-        <button type="button" class="action-btn btn-orange" id="btnBuy">ওয়ালেট থেকে অর্ডার কনফার্ম করুন</button>
     </div>
 
-    <div class="card">
-        <h3>📞 হেল্পলাইন ও সাপোর্ট</h3>
-        <div class="support-btns">
-            <a href="https://wa.me" class="wa-btn" target="_blank">💬 WhatsApp মেসেজ</a>
-            <a href="tel:+8801621459286" class="call-btn">📞 সরাসরি কল করুন</a>
+    <!-- ধাপ ২: প্যাকেজ সিলেক্ট করলে নিচে এই বক্সটি খুলে যাবে -->
+    <div class="box checkout-box" id="checkoutSection">
+        <h3>🛒 ২. পেমেন্ট ও অর্ডার কনফার্ম</h3>
+        <p style="font-size: 15px; color: #ffab91;">সিলেক্ট করা প্যাকেজ: <b id="selectedPkgText"></b></p>
+
+        <!-- অপশন ক: ওয়ালেট থেকে কেনা -->
+        <button type="button" onclick="buyWithWallet()">✅ ওয়ালেট ব্যালেন্স দিয়ে অর্ডার করুন</button>
+
+        <hr style="border: 0.5px solid #333; margin: 18px 0;">
+
+        <!-- অপশন খ: ওয়ালেটে টাকা না থাকলে বিকাশ/নগদে অ্যাড মানি -->
+        <h4 style="margin: 5px 0; color: #f6921e;">💳 ওয়ালেটে টাকা নেই? নিচে Add Money করুন:</h4>
+        <div class="pay-tabs">
+            <button type="button" class="pay-tab bkash-tab active" id="tabBkash" onclick="chooseMethod('bKash')">বিকাশ (bKash)</button>
+            <button type="button" class="pay-tab nagad-tab" id="tabNagad" onclick="chooseMethod('Nagad')">নগদ (Nagad)</button>
         </div>
+
+        <div class="num-display">
+            <div style="font-size: 13px;"><span id="methodTitle">বিকাশ (bKash)</span> পার্সোনাল নম্বরে Send Money করুন:</div>
+            <div class="num-text" id="payNumDisplay">01881663599</div>
+            <button type="button" class="copy-btn" onclick="copyPayNumber()">📋 নম্বর কপি করুন</button>
+        </div>
+
+        <input type="number" id="addAmount" placeholder="কত টাকা পাঠিয়েছেন? (যেমন: 100)">
+        <input type="text" id="trxId" placeholder="Transaction ID (TrxID) দিন">
+        <button type="button" class="add-btn" onclick="addMoneyNow()">➕ ওয়ালেটে টাকা অ্যাড করুন</button>
     </div>
-</div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const adminWhatsApp = "8801621459286";
-    let balance = parseInt(localStorage.getItem("hmm_wallet")) || 0;
-    document.getElementById("userBalance").innerText = balance;
+    <!-- হেল্পলাইন -->
+    <div class="box">
+        <h3>📞 হেল্পলাইন ও সাপোর্ট</h3>
+        <p style="font-size: 13px;">যেকোনো সমস্যায় সরাসরি যোগাযোগ করুন (01621459286):</p>
+        <a href="https://wa.me" class="wa-btn" target="_blank">WhatsApp মেসেজ</a>
+        <a href="tel:+8801621459286" class="call-btn">সরাসরি কল করুন</a>
+    </div>
 
-    let selectedMethod = "";
-    let selectedPrice = 0;
-    let selectedPkgName = "";
+    <script>
+        const adminWhatsApp = "8801621459286";
+        let balance = parseInt(localStorage.getItem("hmm_wallet")) || 0;
+        document.getElementById("userBalance").innerText = balance;
 
-    // Add Money বক্স খোলা/বন্ধ
-    document.getElementById("btnToggleAdd").addEventListener("click", function() {
-        const box = document.getElementById("addMoneySection");
-        box.style.display = (box.style.display === "none") ? "block" : "none";
-    });
+        let currentPrice = 0;
+        let currentPkgName = "";
+        let currentMethod = "bKash";
 
-    // বিকাশ সিলেক্ট
+        // প্যাকেজ সিলেক্ট করলে নিচের চেকআউট বক্স দেখানো
+        function onPackageSelect() {
+            const val = document.getElementById("packageSelect").value;
+            const checkoutBox = document.getElementById("checkoutSection");
+
+            if (val === "") {
+                checkoutBox.style.display = "none";
+                currentPrice = 0;
+                currentPkgName = "";
+                return;
+            }
+
+            const parts = val.split("|");
+            currentPrice = parseInt(parts[0]);
+            currentPkgName = parts[1];
+
+            document.getElementById("selectedPkgText").innerText = currentPkgName + " (" + currentPrice + " টাকা)";
+            document.getElementById("addAmount").value = currentPrice; // অটোমেটিক প্যাকেজের দাম বসিয়ে দেওয়া
+            checkoutBox.style.display = "block";
+        }
+
+        // বিকাশ বা নগদ বাটন পরিবর্তন
+        function chooseMethod(method) {
+            currentMethod = method;
+            if (method === "bKash") {
+                document.getElementById("methodTitle").innerText = "বিকাশ (bKash)";
+                document.getElementById("payNumDisplay").innerText = "01881663599";
+                document.getElementById("tabBkash").classList.add("active");
+                document.getElementById("tabNagad").classList.remove("active");
+            } else {
+                document.getElementById("methodTitle").innerText = "নগদ (Nagad)";
+                document.getElementById("payNumDisplay").innerText = "01621459286";
+                document.getElementById("tabNagad").classList.add("active");
+                document.getElementById("tabBkash").classList.remove("active");
+            }
+        }
+
+        // নম্বর কপি করা
+        function copyPayNumber() {
+            const num = document.getElementById("payNumDisplay").innerText;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(num);
+                alert(currentMethod + " নম্বর কপি হয়েছে: " + num);
+            } else {
+                alert("নম্বরটি হলো: " + num);
+            }
+        }
+
+        // টাকা অ্যাড করা
+        function addMoneyNow() {
+            const amount = parseInt(document.getElementById("addAmount").value);
+            const trx = document.getElementById("trxId").value.trim();
+
+            if (!amount || amount <= 0 || trx === "") {
+                alert("দয়া করে টাকার পরিমাণ এবং সঠিক TrxID দিন!");
+                return;
+            }
+
+            balance += amount;
+            localStorage.setItem("hmm_wallet", balance);
+            document.getElementById("userBalance").innerText = balance;
+            document.getElementById("trxId").value = "";
+
+            alert("ধন্যবাদ! আপনার ওয়ালেটে " + amount + " টাকা যোগ হয়েছে। ভেরিফিকেশনের জন্য হোয়াটসঅ্যাপে তথ্য পাঠানো হচ্ছে।");
+
+            const msg = "নতুন Add Money রিকোয়েস্ট:%0Aমাধ্যম: " + currentMethod + "%0Aপরিমাণ: " + amount + " টাকা%0ATrxID: " + trx;
+        
